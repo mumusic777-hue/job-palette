@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JOB PALETTE | 中卒・高卒・第二新卒の就職・転職サポート</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+      color: #1a1a2e;
+      line-height: 1.7;
+      background: #fff;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid #f0f0f0;
+      box-shadow: 0 1px 8px rgba(0,0,0,.06);
+    }
+    .header-inner {
+      max-width: 1152px;
+      margin: auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #e85d04;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo svg { width: 22px; height: 22px; }
+    nav { display: flex; gap: 32px; }
+    nav a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: #555;
+      transition: color .15s;
+    }
+    nav a:hover { color: #e85d04; }
+    .btn-line {
+      background: #e85d04;
+      color: #fff;
+      font-weight: 700;
+      font-size: .875rem;
+      padding: 8px 20px;
+      border-radius: 999px;
+      transition: background .2s;
+    }
+    .btn-line:hover { background: #c44d03; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 55%, #e85d04 100%);
+      color: #fff;
+      padding: 96px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 40px; left: 20px;
+      width: 300px; height: 300px;
+      background: rgba(255,255,255,.06);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 500px; height: 500px;
+      background: rgba(255,209,102,.08);
+      border-radius: 50%;
+      filter: blur(80px);
+    }
+    .hero-inner {
+      max-width: 1152px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: #e85d04;
+      color: #fff;
+      font-size: .875rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .hero h1 span { color: #ffd166; }
+    .hero p {
+      font-size: 1.125rem;
+      color: rgba(255,255,255,.8);
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 56px; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #e85d04;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 16px 32px;
+      border-radius: 999px;
+      transition: all .2s;
+      box-shadow: 0 4px 16px rgba(232,93,4,.4);
+    }
+    .btn-primary:hover { background: #c44d03; transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid #fff;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 16px 32px;
+      border-radius: 999px;
+      transition: all .2s;
+    }
+    .btn-outline:hover { background: #fff; color: #1a1a2e; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 640px;
+    }
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #ffd166;
+    }
+    .stat-label {
+      font-size: .75rem;
+      color: rgba(255,255,255,.65);
+      margin-top: 2px;
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1152px; margin: auto; }
+    .section-label {
+      font-size: .8rem;
+      font-weight: 700;
+      color: #e85d04;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      font-size: .95rem;
+      color: #888;
+    }
+    .section-head { margin-bottom: 48px; }
+
+    /* ===== CATEGORY ===== */
+    .category-section { background: #f9fafb; }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .category-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1.5px solid #e8e8e8;
+      border-radius: 14px;
+      padding: 14px 16px;
+      transition: all .15s;
+      cursor: pointer;
+    }
+    .category-card:hover {
+      border-color: #e85d04;
+      background: #fff8f5;
+    }
+    .category-card:hover .cat-label { color: #e85d04; }
+    .cat-emoji { font-size: 1.5rem; }
+    .cat-label { font-size: .875rem; font-weight: 500; color: #444; }
+
+    /* ===== JOB CARDS ===== */
+    .jobs-section { background: #fff; }
+    .jobs-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    .link-more {
+      font-size: .875rem;
+      font-weight: 600;
+      color: #e85d04;
+    }
+    .link-more:hover { text-decoration: underline; }
+    .job-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .job-card {
+      border: 1.5px solid #f0f0f0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      transition: box-shadow .2s, transform .2s;
+    }
+    .job-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.10); transform: translateY(-2px); }
+    .job-card-top {
+      background: #fff8f5;
+      padding: 12px 16px 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .badge-cat {
+      background: #e85d04;
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .badge-hot {
+      background: #fef08a;
+      color: #854d0e;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .job-card-body { padding: 14px 16px 16px; }
+    .company-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .company-icon {
+      width: 32px; height: 32px;
+      background: #f3f4f6;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .8rem;
+      color: #888;
+      flex-shrink: 0;
+    }
+    .company-name { font-size: .8rem; color: #888; }
+    .job-title {
+      font-weight: 700;
+      font-size: .9rem;
+      color: #1a1a2e;
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+    .job-meta { display: flex; flex-direction: column; gap: 5px; }
+    .job-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .78rem;
+      color: #777;
+    }
+    .meta-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #e85d04;
+      flex-shrink: 0;
+    }
+    .job-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+    .tag {
+      background: #f3f4f6;
+      color: #555;
+      font-size: .72rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    /* ===== FLOW ===== */
+    .flow-section {
+      background: linear-gradient(to bottom, #fff8f5, #fff);
+    }
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .flow-card {
+      background: #fff;
+      border: 1.5px solid #f0f0f0;
+      border-radius: 18px;
+      padding: 24px;
+      position: relative;
+    }
+    .flow-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .flow-num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #ffe8d6;
+      line-height: 1;
+    }
+    .flow-icon {
+      width: 40px; height: 40px;
+      background: #fff8f5;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .flow-icon svg { width: 20px; height: 20px; color: #e85d04; }
+    .flow-arrow {
+      position: absolute;
+      top: 36px;
+      right: -14px;
+      color: #ddd;
+      font-size: 1.2rem;
+      z-index: 2;
+    }
+    .flow-title { font-weight: 700; margin-bottom: 8px; }
+    .flow-desc { font-size: .83rem; color: #666; line-height: 1.6; }
+
+    /* ===== WHY ===== */
+    .why-section { background: #1a1a2e; color: #fff; }
+    .why-section .section-title { color: #fff; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .why-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 18px;
+      padding: 28px;
+      transition: background .2s;
+    }
+    .why-card:hover { background: rgba(255,255,255,.09); }
+    .why-emoji { font-size: 2.5rem; margin-bottom: 16px; }
+    .why-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; }
+    .why-desc { font-size: .85rem; color: rgba(255,255,255,.65); line-height: 1.7; }
+
+    /* ===== VOICE ===== */
+    .voice-section { background: #f9fafb; }
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .voice-card {
+      background: #fff;
+      border: 1.5px solid #f0f0f0;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+    .voice-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .voice-avatar {
+      width: 52px; height: 52px;
+      background: #ffe8d6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #e85d04;
+      flex-shrink: 0;
+    }
+    .voice-name { font-weight: 700; }
+    .voice-age { font-size: .8rem; color: #888; font-weight: 400; }
+    .voice-job {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .82rem;
+      margin-top: 4px;
+    }
+    .voice-before { color: #aaa; text-decoration: line-through; }
+    .voice-arrow { color: #e85d04; font-weight: 700; }
+    .voice-after { color: #e85d04; font-weight: 600; }
+    .voice-comment {
+      font-size: .85rem;
+      color: #555;
+      line-height: 1.75;
+      padding-left: 12px;
+      border-left: 3px solid #ffe8d6;
+    }
+    .voice-more {
+      display: block;
+      font-size: .8rem;
+      color: #e85d04;
+      font-weight: 600;
+      margin-top: 14px;
+    }
+    .voice-more:hover { text-decoration: underline; }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      background: linear-gradient(135deg, #e85d04, #f4a261);
+      color: #fff;
+      text-align: center;
+      padding: 96px 24px;
+    }
+    .cta-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .cta-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 36px;
+    }
+    .cta-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: #e85d04;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 16px 40px;
+      border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+      transition: all .2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .cta-checks {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      font-size: .875rem;
+      color: rgba(255,255,255,.8);
+    }
+    .check-item { display: flex; align-items: center; gap: 6px; }
+    .check-item::before { content: "✓"; font-weight: 700; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 64px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1152px;
+      margin: auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 24px;
+    }
+    .footer-logo {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #e85d04;
+      margin-bottom: 16px;
+    }
+    .footer-desc {
+      font-size: .85rem;
+      color: rgba(255,255,255,.55);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .footer-contact { display: flex; flex-direction: column; gap: 8px; }
+    .footer-contact-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      color: rgba(255,255,255,.55);
+    }
+    .footer-contact-row span:first-child { color: #e85d04; }
+    .footer-col-title {
+      font-size: .75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.45);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 16px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a {
+      font-size: .85rem;
+      color: rgba(255,255,255,.55);
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      font-size: .8rem;
+      color: rgba(255,255,255,.35);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .job-grid { grid-template-columns: repeat(2, 1fr); }
+      .flow-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }  /* keep 2 */
+      .voice-grid { grid-template-columns: 1fr; max-width: 480px; margin: auto; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      nav, .btn-line { display: none; }
+    }
+    @media (max-width: 600px) {
+      .job-grid { grid-template-columns: 1fr; }
+      .flow-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; }
+      .flow-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+      JOB PALETTE
+    </a>
+    <nav>
+      <a href="#jobs">求人情報を探す</a>
+      <a href="#flow">サービス案内</a>
+      <a href="#voice">転職者の声</a>
+      <a href="#cta">無料相談</a>
+    </nav>
+    <a href="#cta" class="btn-line">LINEで相談する</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">中卒・高卒・第二新卒 大歓迎</span>
+    <h1>
+      あなたらしい<br>
+      <span>「働く」</span>を<br>
+      一緒に見つけよう
+    </h1>
+    <p>学歴や経歴は関係ありません。JOB PALETTEは、あなたの可能性を信じて理想のキャリアへ導きます。</p>
+    <div class="hero-btns">
+      <a href="#jobs" class="btn-primary">求人情報を探す →</a>
+      <a href="#cta" class="btn-outline">無料で相談する</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-value">98%</div><div class="stat-label">就職成功率</div></div>
+      <div><div class="stat-value">3,000+</div><div class="stat-label">累計支援実績</div></div>
+      <div><div class="stat-value">500社+</div><div class="stat-label">提携企業数</div></div>
+      <div><div class="stat-value">4.8</div><div class="stat-label">満足度（5点満点）</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY -->
+<section class="category-section">
+  <div class="section-inner">
+    <div class="section-head" style="text-align:center">
+      <h2 class="section-title">職種から求人を探す</h2>
+      <p class="section-sub">気になる職種をクリックしてください</p>
+    </div>
+    <div class="category-grid">
+      <div class="category-card"><span class="cat-emoji">💼</span><span class="cat-label">営業・販売</span></div>
+      <div class="category-card"><span class="cat-emoji">🗂️</span><span class="cat-label">事務・バックオフィス</span></div>
+      <div class="category-card"><span class="cat-emoji">🏭</span><span class="cat-label">製造・工場</span></div>
+      <div class="category-card"><span class="cat-emoji">💻</span><span class="cat-label">IT・エンジニア</span></div>
+      <div class="category-card"><span class="cat-emoji">😊</span><span class="cat-label">サービス・接客</span></div>
+      <div class="category-card"><span class="cat-emoji">🚚</span><span class="cat-label">物流・配送</span></div>
+      <div class="category-card"><span class="cat-emoji">🏥</span><span class="cat-label">医療・介護</span></div>
+      <div class="category-card"><span class="cat-emoji">🍽️</span><span class="cat-label">飲食・調理</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOBS -->
+<section class="jobs-section" id="jobs">
+  <div class="section-inner">
+    <div class="jobs-header">
+      <div>
+        <h2 class="section-title">注目の求人情報</h2>
+        <p class="section-sub">厳選したおすすめ求人をご紹介</p>
+      </div>
+      <a href="#" class="link-more">すべて見る →</a>
+    </div>
+    <div class="job-grid">
+      <!-- Job Card 1 -->
+      <div class="job-card">
+        <div class="job-card-top">
+          <span class="badge-cat">営業・販売</span>
+          <span class="badge-hot">注目</span>
+        </div>
+        <div class="job-card-body">
+          <div class="company-row">
+            <div class="company-icon">A</div>
+            <span class="company-name">株式会社〇〇</span>
+          </div>
+          <div class="job-title">未経験歓迎！ノルマなし・インセンティブあり営業職</div>
+          <div class="job-meta">
+            <div class="job-meta-row"><span class="meta-dot"></span>月給 20万円〜30万円</div>
+            <div class="job-meta-row"><span class="meta-dot"></span>大阪府・兵庫県</div>
+            <div class="job-meta-row"><span class="meta-dot"></span>正社員</div>
+          </div>
+          <div class="job-tags">
+            <span class="tag">未経験OK</span>
+            <span class="tag">ノルマなし</span>
+            <span class="tag">研修充実</span>
+          </div>
+        </div>
+      </div>
+      <!-- Job Card 2 -->
+      <div class="job-card">
+        <div class="job-card-top">
+          <span class="badge-cat">製造・工場</span>
+        </div>
+        <div class="job-card-body">
+          <div class="company-row">
+            <div class="company-icon">B</div>
+            <span class="company-name">〇〇製造株式会社</span>
+          </div>
+          <div class="job-title">食品工場スタッフ｜未経験から月給25万円以上も可能</div>
+          <div class="job-meta">
+            <div class="job-meta-row"><span class="meta-dot"></span>月給 22万円〜28万円</div>
+            <div class="job-meta-row"><span class="meta-dot"></span>大阪府</div>
+            <div class="job-meta-row"><span class="meta-dot"></span>正社員</div>
+          </div>
+          <div class="job-tags">
+            <span class="tag">未経験OK</span>
+            <span class="tag">寮完備</span>
+          </div>
+        </div>
+      </div>
+      <!-- Job Card 3 -->
+      <div class="job-card">
+        <div class="job-card-top">
+          <span class="badge-cat">サービス・接客</span>
+          <span class="badge-hot">注目</span>
+        </div>
+        <div class="job-card-body">
+          <div class="company-row">
+            <div class="company-icon">C</div>
+            <span class="company-name">〇〇サービス株式会社</span>
+          </div>
+          <div class="job-title">接客スタッフ｜週3日〜・シフト自由・副業OK</div>
+          <div class="job-meta">
+            <div class="job-meta-row"><span class="meta-dot"></span>時給 1,200円〜1,500円</div>
+            <div class="job-meta-row"><span class="meta-dot"></span>全国各地</div>
+            <div class="job-meta-row"><span class="meta-dot"></span>アルバイト</div>
+          </div>
+          <div class="job-tags">
+            <span class="tag">週3日〜</span>
+            <span class="tag">副業OK</span>
+            <span class="tag">交通費支給</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow-section" id="flow">
+  <div class="section-inner">
+    <div class="section-head" style="text-align:center">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title">就職・転職までの流れ</h2>
+      <p class="section-sub">相談から内定まで、全てのステップをサポートします</p>
+    </div>
+    <div class="flow-grid">
+      <div class="flow-card">
+        <span class="flow-arrow">›</span>
+        <div class="flow-top">
+          <span class="flow-num">01</span>
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e85d04" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+        </div>
+        <div class="flow-title">無料カウンセリング</div>
+        <div class="flow-desc">LINEや電話でお気軽にご相談ください。あなたの希望や状況をじっくりお聞きします。</div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-arrow">›</span>
+        <div class="flow-top">
+          <span class="flow-num">02</span>
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e85d04" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+        </div>
+        <div class="flow-title">求人のご紹介</div>
+        <div class="flow-desc">強みや将来の目標に合わせた求人を厳選してご紹介。5〜10年後のキャリアも一緒に考えます。</div>
+      </div>
+      <div class="flow-card">
+        <span class="flow-arrow">›</span>
+        <div class="flow-top">
+          <span class="flow-num">03</span>
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e85d04" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+        </div>
+        <div class="flow-title">面接サポート</div>
+        <div class="flow-desc">書類作成から面接対策まで徹底サポート。自信を持って面接に臨めるよう準備します。</div>
+      </div>
+      <div class="flow-card">
+        <div class="flow-top">
+          <span class="flow-num">04</span>
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e85d04" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+        </div>
+        <div class="flow-title">内定・入社後フォロー</div>
+        <div class="flow-desc">内定後も安心。入社後のフォローまで継続して行い、長期的な活躍を応援します。</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="#cta" class="btn-primary">サービス詳細を見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section">
+  <div class="section-inner">
+    <div class="section-head" style="text-align:center">
+      <span class="section-label" style="color:#ffd166">Why JOB PALETTE</span>
+      <h2 class="section-title">JOB PALETTEが選ばれる理由</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-emoji">🎓</div>
+        <div class="why-title">学歴・経歴不問</div>
+        <div class="why-desc">中卒・高卒・第二新卒など、どんな経歴でも歓迎。あなたの「今」と「これから」を一緒に考えます。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-emoji">🤝</div>
+        <div class="why-title">専任アドバイザーが二人三脚</div>
+        <div class="why-desc">担当アドバイザーが最初から最後まで一貫してサポート。安心して転職活動を進められます。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-emoji">✨</div>
+        <div class="why-title">完全無料のサポート</div>
+        <div class="why-desc">相談から内定まで、すべて無料。費用の心配なく転職活動に集中できます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice-section" id="voice">
+  <div class="section-inner">
+    <div class="jobs-header">
+      <div>
+        <span class="section-label">Success Stories</span>
+        <h2 class="section-title">転職者の声</h2>
+        <p class="section-sub">JOB PALETTEで転職を成功させた方の声</p>
+      </div>
+      <a href="#" class="link-more">すべて見る →</a>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-header">
+          <div class="voice-avatar">田</div>
+          <div>
+            <div class="voice-name">田中 〇〇 <span class="voice-age">（24歳）</span></div>
+            <div class="voice-job">
+              <span class="voice-before">フリーター</span>
+              <span class="voice-arrow">→</span>
+              <span class="voice-after">営業職（正社員）</span>
+            </div>
+          </div>
+        </div>
+        <p class="voice-comment">学歴もなくて転職できるか不安でしたが、担当の方が親身になってサポートしてくれました。今では毎日仕事が楽しいです！</p>
+        <a href="#" class="voice-more">詳しく読む →</a>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <div class="voice-avatar">鈴</div>
+          <div>
+            <div class="voice-name">鈴木 〇〇 <span class="voice-age">（27歳）</span></div>
+            <div class="voice-job">
+              <span class="voice-before">飲食スタッフ</span>
+              <span class="voice-arrow">→</span>
+              <span class="voice-after">事務職（正社員）</span>
+            </div>
+          </div>
+        </div>
+        <p class="voice-comment">ずっと飲食業界にいて転職できるか自信がなかったです。でも強みを見つけてもらえて、未経験で事務職に就けました。</p>
+        <a href="#" class="voice-more">詳しく読む →</a>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <div class="voice-avatar">山</div>
+          <div>
+            <div class="voice-name">山本 〇〇 <span class="voice-age">（22歳）</span></div>
+            <div class="voice-job">
+              <span class="voice-before">高卒・就活中</span>
+              <span class="voice-arrow">→</span>
+              <span class="voice-after">IT企業（正社員）</span>
+            </div>
+          </div>
+        </div>
+        <p class="voice-comment">高校卒業後に就活で失敗して落ち込んでいました。JOB PALETTEのアドバイザーさんが面接練習を何度もしてくれて内定をもらえました！</p>
+        <a href="#" class="voice-more">詳しく読む →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="section-inner">
+    <h2 class="cta-title">まずは気軽に相談してみませんか？</h2>
+    <p class="cta-sub">LINEで簡単に相談できます。相談は完全無料。あなたのペースで大丈夫です。</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-white">LINEで無料相談する →</a>
+      <a href="#jobs" class="btn-outline" style="border-color:#fff;color:#fff">求人情報を見る</a>
+    </div>
+    <div class="cta-checks">
+      <span class="check-item">相談・サポート完全無料</span>
+      <span class="check-item">学歴・経歴不問</span>
+      <span class="check-item">専任担当者があなたをサポート</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">💼 JOB PALETTE</div>
+        <p class="footer-desc">
+          中卒・高卒・第二新卒の方を中心に、<br>
+          一人ひとりに寄り添った就職・転職サポートを行っています。
+        </p>
+        <div class="footer-contact">
+          <div class="footer-contact-row"><span>📍</span><span>〒XXX-XXXX 大阪府○○市○○区1-1-1</span></div>
+          <div class="footer-contact-row"><span>📞</span><span>0X-XXXX-XXXX（平日 9:00〜18:00）</span></div>
+          <div class="footer-contact-row"><span>✉</span><span>info@job-palette.co.jp</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">サービス</div>
+        <div class="footer-links">
+          <a href="#jobs">求人情報を探す</a>
+          <a href="#flow">サービス案内</a>
+          <a href="#voice">転職者の声</a>
+          <a href="#cta">無料相談</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">会社情報</div>
+        <div class="footer-links">
+          <a href="#">会社概要</a>
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">利用規約</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 株式会社JOB PALETTE. All rights reserved.</span>
+      <span>有料職業紹介事業許可番号：XX-XXXXXX</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
