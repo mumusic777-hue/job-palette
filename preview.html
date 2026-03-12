@@ -51,6 +51,14 @@
       transition: color .15s;
     }
     nav a:hover { color: #e85d04; }
+    .nav-company {
+      background: #1a1a2e;
+      color: #fff !important;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: .82rem !important;
+    }
+    .nav-company:hover { background: #2d2d4e !important; color: #ffd166 !important; }
     .btn-line {
       background: #e85d04;
       color: #fff;
@@ -495,7 +503,7 @@
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 48px;
       padding-bottom: 40px;
       border-bottom: 1px solid rgba(255,255,255,.1);
@@ -544,16 +552,229 @@
       color: rgba(255,255,255,.35);
     }
 
+    /* ===== SEARCH BAR ===== */
+    .search-section {
+      background: #f1f5f9;
+      padding: 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .search-bar-wrap {
+      max-width: 1152px;
+      margin: auto;
+      padding: 20px 24px 16px;
+    }
+    .search-count {
+      font-size: .9rem;
+      color: #555;
+      margin-bottom: 12px;
+    }
+    .search-count strong { color: #e85d04; font-size: 1.1rem; font-weight: 900; }
+    .search-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 200px;
+    }
+    .search-input-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px; height: 16px;
+      color: #aaa;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px 12px 38px;
+      border: 1.5px solid #dde1e8;
+      border-radius: 10px;
+      font-size: .9rem;
+      background: #fff;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-input:focus { border-color: #e85d04; }
+    .search-select {
+      padding: 12px 32px 12px 14px;
+      border: 1.5px solid #dde1e8;
+      border-radius: 10px;
+      font-size: .875rem;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .search-select:focus { border-color: #e85d04; }
+    .search-x { color: #bbb; font-size: .85rem; flex-shrink: 0; }
+    .search-btn {
+      background: #e85d04;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background .2s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .search-btn:hover { background: #c44d03; }
+    .search-tags {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .search-tags-label {
+      font-size: .78rem;
+      color: #888;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .search-tag {
+      font-size: .78rem;
+      color: #555;
+      background: #fff;
+      border: 1px solid #dde1e8;
+      padding: 4px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .search-tag:hover { border-color: #e85d04; color: #e85d04; background: #fff8f5; }
+
+    /* ===== COMPANY SECTION ===== */
+    .company-section { background: #fff; }
+    .company-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .company-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .company-card-inner {
+      padding: 40px 36px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .company-card.post { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; }
+    .company-card.agency { background: linear-gradient(135deg, #e85d04 0%, #f4a261 100%); color: #fff; }
+    .company-card-icon {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    .company-card.post .company-card-icon { background: rgba(255,255,255,.1); }
+    .company-card.agency .company-card-icon { background: rgba(255,255,255,.2); }
+    .company-card-label {
+      font-size: .8rem;
+      font-weight: 700;
+      opacity: .7;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 8px;
+    }
+    .company-card-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .company-card-desc {
+      font-size: .9rem;
+      opacity: .85;
+      line-height: 1.75;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .company-card-points {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .company-point {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .85rem;
+      opacity: .9;
+    }
+    .company-point::before { content: "✓"; font-weight: 700; flex-shrink: 0; }
+    .btn-company-post {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #e85d04;
+      color: #fff;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      transition: all .2s;
+      align-self: flex-start;
+      font-size: .95rem;
+    }
+    .btn-company-post:hover { background: #c44d03; transform: translateY(-1px); }
+    .btn-company-agency {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: #e85d04;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      transition: all .2s;
+      align-self: flex-start;
+      font-size: .95rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.15);
+    }
+    .btn-company-agency:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,.2); }
+    .company-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,.15);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .category-grid { grid-template-columns: repeat(2, 1fr); }
       .job-grid { grid-template-columns: repeat(2, 1fr); }
       .flow-grid { grid-template-columns: repeat(2, 1fr); }
-      .why-grid { grid-template-columns: repeat(2, 1fr); }  /* keep 2 */
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
       .voice-grid { grid-template-columns: 1fr; max-width: 480px; margin: auto; }
       .hero-stats { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+      .company-grid { grid-template-columns: 1fr; }
       nav, .btn-line { display: none; }
+      .search-row { flex-direction: column; align-items: stretch; }
+      .search-select { width: 100%; }
+      .search-x { display: none; }
     }
     @media (max-width: 600px) {
       .job-grid { grid-template-columns: 1fr; }
@@ -563,6 +784,7 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 8px; }
       .flow-arrow { display: none; }
+      .company-card-inner { padding: 28px 24px; }
     }
   </style>
 </head>
@@ -580,6 +802,7 @@
       <a href="#flow">サービス案内</a>
       <a href="#voice">転職者の声</a>
       <a href="#cta">無料相談</a>
+      <a href="#company" class="nav-company">企業様向け</a>
     </nav>
     <a href="#cta" class="btn-line">LINEで相談する</a>
   </div>
@@ -607,6 +830,62 @@
     </div>
   </div>
 </section>
+
+<!-- SEARCH BAR -->
+<div class="search-section">
+  <div class="search-bar-wrap">
+    <p class="search-count">掲載求人数 <strong>1,200件</strong>！　最終更新日：2026/03/12</p>
+    <div class="search-row">
+      <div class="search-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" class="search-input" placeholder="キーワードから探す（例：未経験歓迎、営業）" />
+      </div>
+      <span class="search-x">×</span>
+      <select class="search-select">
+        <option value="">職種</option>
+        <option>営業・販売</option>
+        <option>事務・バックオフィス</option>
+        <option>製造・工場</option>
+        <option>IT・エンジニア</option>
+        <option>サービス・接客</option>
+        <option>物流・配送</option>
+        <option>医療・介護</option>
+        <option>飲食・調理</option>
+      </select>
+      <span class="search-x">×</span>
+      <select class="search-select">
+        <option value="">雇用形態</option>
+        <option>正社員</option>
+        <option>アルバイト・パート</option>
+        <option>契約社員</option>
+      </select>
+      <span class="search-x">×</span>
+      <select class="search-select">
+        <option value="">勤務地</option>
+        <option>大阪府</option>
+        <option>兵庫県</option>
+        <option>京都府</option>
+        <option>東京都</option>
+        <option>愛知県</option>
+        <option>全国・リモート</option>
+      </select>
+      <button class="search-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        検索
+      </button>
+    </div>
+    <div class="search-tags">
+      <span class="search-tags-label">人気キーワード：</span>
+      <span class="search-tag">未経験OK</span>
+      <span class="search-tag">高卒歓迎</span>
+      <span class="search-tag">正社員登用あり</span>
+      <span class="search-tag">週休2日</span>
+      <span class="search-tag">残業少なめ</span>
+      <span class="search-tag">寮完備</span>
+      <span class="search-tag">資格取得支援</span>
+    </div>
+  </div>
+</div>
 
 <!-- CATEGORY -->
 <section class="category-section">
@@ -860,6 +1139,108 @@
   </div>
 </section>
 
+<!-- COMPANY SECTION -->
+<section class="company-section" id="company">
+  <div class="section-inner">
+    <div class="section-head" style="text-align:center">
+      <span class="section-label">For Companies</span>
+      <h2 class="section-title">企業様向けサービス</h2>
+      <p class="section-sub">採用に関するご依頼・ご相談はお気軽にお問い合わせください</p>
+    </div>
+    <div class="company-grid">
+
+      <!-- 求人掲載 -->
+      <div class="company-card post">
+        <span class="company-badge">無料掲載あり</span>
+        <div class="company-card-inner">
+          <div class="company-card-icon">📋</div>
+          <div class="company-card-label">Job Posting</div>
+          <h3 class="company-card-title">求人を掲載する</h3>
+          <p class="company-card-desc">
+            JOB PALETTEに求人を掲載して、中卒・高卒・第二新卒など
+            若手人材に直接アプローチ。登録求職者へダイレクトに情報を届けます。
+          </p>
+          <div class="company-card-points">
+            <div class="company-point">若手・未経験層に特化したユーザー基盤</div>
+            <div class="company-point">シンプルな掲載フォームで最短即日公開</div>
+            <div class="company-point">応募状況をリアルタイムで管理</div>
+            <div class="company-point">掲載プラン無料〜（詳細はお問い合わせ）</div>
+          </div>
+          <a href="#company-contact" class="btn-company-post">求人掲載のお問い合わせ →</a>
+        </div>
+      </div>
+
+      <!-- 採用代行 -->
+      <div class="company-card agency">
+        <span class="company-badge">採用丸ごとお任せ</span>
+        <div class="company-card-inner">
+          <div class="company-card-icon">🤝</div>
+          <div class="company-card-label">Recruitment Agency</div>
+          <h3 class="company-card-title">採用を依頼する</h3>
+          <p class="company-card-desc">
+            採用計画の立案から母集団形成・面接・内定まで、採用業務を
+            丸ごとJOB PALETTEにお任せいただけます。採用担当者の工数を大幅削減。
+          </p>
+          <div class="company-card-points">
+            <div class="company-point">要件定義〜内定まで一貫サポート</div>
+            <div class="company-point">成果報酬型で初期費用リスクなし</div>
+            <div class="company-point">内定後フォローで定着率向上</div>
+            <div class="company-point">業界・職種問わず対応可能</div>
+          </div>
+          <a href="#company-contact" class="btn-company-agency">採用支援のご相談 →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 企業問い合わせフォーム -->
+    <div id="company-contact" style="margin-top:48px;background:#f9fafb;border-radius:20px;padding:40px;">
+      <h3 style="font-size:1.25rem;font-weight:800;color:#1a1a2e;margin-bottom:8px;text-align:center;">企業様お問い合わせフォーム</h3>
+      <p style="text-align:center;color:#888;font-size:.9rem;margin-bottom:28px;">お気軽にご相談ください。1営業日以内にご返信いたします。</p>
+      <form style="max-width:600px;margin:auto;display:flex;flex-direction:column;gap:16px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <label style="display:block;font-size:.82rem;font-weight:600;color:#555;margin-bottom:6px;">会社名 <span style="color:#e85d04">*</span></label>
+            <input type="text" placeholder="株式会社〇〇" style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.9rem;outline:none;" />
+          </div>
+          <div>
+            <label style="display:block;font-size:.82rem;font-weight:600;color:#555;margin-bottom:6px;">担当者名 <span style="color:#e85d04">*</span></label>
+            <input type="text" placeholder="山田 太郎" style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.9rem;outline:none;" />
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <label style="display:block;font-size:.82rem;font-weight:600;color:#555;margin-bottom:6px;">メールアドレス <span style="color:#e85d04">*</span></label>
+            <input type="email" placeholder="info@example.co.jp" style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.9rem;outline:none;" />
+          </div>
+          <div>
+            <label style="display:block;font-size:.82rem;font-weight:600;color:#555;margin-bottom:6px;">電話番号</label>
+            <input type="tel" placeholder="06-0000-0000" style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.9rem;outline:none;" />
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-size:.82rem;font-weight:600;color:#555;margin-bottom:6px;">お問い合わせ種別 <span style="color:#e85d04">*</span></label>
+          <select style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.9rem;outline:none;background:#fff;">
+            <option value="">選択してください</option>
+            <option>求人掲載について</option>
+            <option>採用代行・採用支援について</option>
+            <option>料金プランについて</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:.82rem;font-weight:600;color:#555;margin-bottom:6px;">お問い合わせ内容</label>
+          <textarea rows="4" placeholder="採用背景や採用要件など、お気軽にお書きください。" style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.9rem;outline:none;resize:vertical;font-family:inherit;"></textarea>
+        </div>
+        <button type="submit" style="background:#e85d04;color:#fff;font-weight:700;font-size:1rem;padding:16px;border:none;border-radius:12px;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='#c44d03'" onmouseout="this.style.background='#e85d04'">
+          送信する
+        </button>
+        <p style="font-size:.78rem;color:#aaa;text-align:center;">送信いただいた情報はプライバシーポリシーに基づき適切に管理します。</p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="cta">
   <div class="section-inner">
@@ -900,6 +1281,14 @@
           <a href="#flow">サービス案内</a>
           <a href="#voice">転職者の声</a>
           <a href="#cta">無料相談</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">企業様向け</div>
+        <div class="footer-links">
+          <a href="#company">求人掲載</a>
+          <a href="#company">採用代行・支援</a>
+          <a href="#company-contact">企業お問い合わせ</a>
         </div>
       </div>
       <div>
