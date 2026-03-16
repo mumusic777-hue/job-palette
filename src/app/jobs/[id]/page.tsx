@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { MapPin, Banknote, Clock, ArrowLeft, CheckCircle, MessageCircle } from "lucide-react";
 import { getJob } from "@/lib/microcms";
 import { JOB_CATEGORY_LABELS, EMPLOYMENT_TYPE_LABELS } from "@/types";
+import JobHistoryTracker from "@/components/JobHistoryTracker";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -36,6 +37,18 @@ export default async function JobDetailPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <JobHistoryTracker
+        job={{
+          id: job.id,
+          title: job.title,
+          companyName: job.companyName,
+          category: job.category,
+          location: job.location,
+          salaryMin: job.salaryMin,
+          salaryMax: job.salaryMax,
+          employmentType: job.employmentType,
+        }}
+      />
       <div className="container-base py-8">
         {/* パンくず */}
         <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Search, SlidersHorizontal } from "lucide-react";
 import JobCard from "@/components/JobCard";
+import RecentlyViewedJobs from "@/components/RecentlyViewedJobs";
 import { getJobs } from "@/lib/microcms";
 import { JOB_CATEGORY_LABELS, EMPLOYMENT_TYPE_LABELS, type JobCategory, type EmploymentType } from "@/types";
 
@@ -84,7 +85,8 @@ export default async function JobsPage({
       <div className="container-base py-8">
         <div className="flex gap-8">
           {/* サイドバー（フィルター） */}
-          <aside className="hidden lg:block w-56 flex-shrink-0">
+          <aside className="hidden lg:block w-56 flex-shrink-0 space-y-4">
+            <RecentlyViewedJobs />
             <div className="bg-white rounded-2xl border border-gray-100 p-5 sticky top-20">
               <h2 className="font-bold text-sm text-gray-700 flex items-center gap-2 mb-4">
                 <SlidersHorizontal className="w-4 h-4" />
